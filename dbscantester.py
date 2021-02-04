@@ -27,13 +27,13 @@ elif user_guide == 'User Guide':
     
     col1, col2 = st.beta_columns(2)
     #image1 = Image.open('htu1.png')
-    #col1.image('htu4.png')
+    col1.image('htu4.PNG')
     col2.subheader('Step 1')
     col2.write('From the sidebar, click on Contact-Secure to get started with the application. Using the dropdown menu select a file to explore.')
     st.markdown('---')
     
     col1, col2 = st.beta_columns(2)
-    image2 = Image.open('htu3.png')
+    image2 = Image.open('htu3.PNG')
     col2.image(image2)
     col1.subheader('Step 2')
     col1.write('After uploading a file to the application, the dataframe will display. It also comes with filter options as to which column you wish to sort.')
