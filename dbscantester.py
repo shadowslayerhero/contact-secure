@@ -64,44 +64,44 @@ else:
             col2.success('Travel_Data_2.csv successfully uploaded!')
             
     #model
-    def get_infected_names(input_name):
+    def get_pui(enter_user):
                         epsilon = 0.0018288 # a radial distance of 6 feet in kilometers
                         model = DBSCAN(eps=epsilon, min_samples=2, metric='haversine').fit(df[['latitude', 'longitude']])
                         df['cluster'] = model.labels_.tolist()
                     
-                        input_name_clusters = []
+                        enter_user_clusters = []
                         for i in range(len(df)):
-                            if df['id'][i] == input_name:
-                                if df['cluster'][i] in input_name_clusters:
+                            if df['id'][i] == enter_user:
+                                if df['cluster'][i] in enter_user_clusters:
                                     pass
                                 else:
-                                    input_name_clusters.append(df['cluster'][i])
+                                    enter_user_clusters.append(df['cluster'][i])
                     
-                        infected_names = []
-                        for cluster in input_name_clusters:
+                        pos_users = []
+                        for cluster in enter_user_clusters:
                             if cluster != -1:
                                 ids_in_cluster = df.loc[df['cluster'] == cluster, 'id']
                                 for i in range(len(ids_in_cluster)):
-                                    member_id = ids_in_cluster.iloc[i]
-                                    if (member_id not in infected_names) and (member_id != input_name):
-                                        infected_names.append(member_id)
+                                    user_id = ids_in_cluster.iloc[i]
+                                    if (user_id not in pos_users) and (user_id != enter_user):
+                                        pos_users.append(user_id)
                                     else:
                                         pass
-                        return infected_names
+                        return pos_users
                         
                 
     #print names
-    def print_infected(get_infected_names):
+    def print_infected(get_pui):
                         st.markdown('---')
                         a = st.text_input("Enter person of interest: ", 'Kristian Paule')
-                        b = get_infected_names(a)
+                        b = get_pui(a)
                         
                         st.write("Under investigation: ", b)
                         st.markdown('---')
                         """
                         ## Travel History
                         """
-    print_infected(get_infected_names)
+    print_infected(get_pui)
 
     global numeric_columns
     global non_numeric_columns
