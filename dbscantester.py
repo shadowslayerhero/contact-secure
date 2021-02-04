@@ -27,7 +27,7 @@ elif user_guide == 'User Guide':
     
     col1, col2 = st.beta_columns(2)
     #image1 = Image.open('htu1.png')
-    col1.image('htu4.png')
+    #col1.image('htu4.png')
     col2.subheader('Step 1')
     col2.write('From the sidebar, click on Contact-Secure to get started with the application. Using the dropdown menu select a file to explore.')
     st.markdown('---')
